@@ -49,6 +49,7 @@ export default (config) => {
 		fileUploadPathName = '/upload',
 		base64UploadPathName = '/upload/base64',
 		onError = noop,
+		filesBodyParser = (ctx) => ctx.request.body.files,
 	} = config;
 
 	['accessKey', 'secretKey', 'baseURL'].forEach((p) => {
@@ -71,7 +72,7 @@ export default (config) => {
 
 	router.post(fileUploadPathName, function * () {
 		try {
-			const { files } = this.request.body;
+			const files = filesBodyParser(this);
 			const file = [].concat(files[fileFormName])[0];
 			if (file) {
 				yield response(this, file.path, uploadFile);

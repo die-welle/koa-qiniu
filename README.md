@@ -28,21 +28,30 @@ app.use(koaBody({
 }));
 
 app.use(qiniu({
-    accessKey: '<YOUR_ACCESS_KEY>', // required
+    accessKey: '<YOUR_ACCESS_KEY>', // [required] qiniu accessKey
 
-    secretKey: '<YOUR_SECRET_KEY>', // required
+    secretKey: '<YOUR_SECRET_KEY>', // [required] qiniu secretKey
 
-    baseURL: 'http://<YOUR_QINIU_BASE_URL>.clouddn.com/', // required
+    baseURL: 'http://<YOUR_QINIU_BASE_URL>.clouddn.com/', // [required] qiniu basURL
 
-    bucket: '<YOUR_BUCKET>', // default: 'my_bucket'
+    bucket: 'my_bucket', // [optional]: qiniu bucket
 
-    fileFormName, // default: 'file'
+    fileUploadPathName: '/upload', // [optional]: upload file pathname, eg: http://imyourfather.com/upload
 
-    base64FormName, // default: 'base64'
+    fileFormName: 'file', // [optional]
 
-    fileUploadPathName, // default: '/upload'
+    base64UploadPathName: '/upload/base64', // upload base64 pathname, eg: http://imyourfather.com/upload/base64
 
-    base64UploadPathName, // default: '/upload/base64'
+    base64FormName: 'base64', // [optional]
+
+    filesBodyParser: (ctx) => { // [optional]
+
+        // this is default, for `koa-body` middleware.
+        return ctx.request.body.files;
+
+        // if you are using `koa-bodyparser` middleware,
+        // you should use `ctx.request.files;` instead.
+    },
 
     onError: (err, ctx) => {
         console.error(err);
