@@ -1,7 +1,7 @@
 {
   "name": "koa-qiniu",
   "description": "koa qiniu middleware",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "scripts": {
     "start": "PORT=3000 nodemon example -w src -w example",
