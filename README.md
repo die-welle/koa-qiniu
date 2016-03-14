@@ -50,7 +50,7 @@ app.use(qiniu({
         return ctx.request.body.files;
 
         // if you are using `koa-bodyparser` middleware,
-        // you should use `ctx.request.files;` instead.
+        // you should use `ctx.req.files;` instead.
     },
 
     onError: (err, ctx) => {
