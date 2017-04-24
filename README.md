@@ -1,6 +1,8 @@
 koa-qiniu
 =========================
 
+**THIS REPO WILL NOT BE MANTAINED ANY MORE**
+
 koa qiniu middleware
 
 
